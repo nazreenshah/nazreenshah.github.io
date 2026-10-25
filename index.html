@@ -84,7 +84,7 @@
   header.hero { padding: 56px 0 40px; }
   .hero-grid { display: grid; grid-template-columns: 168px 1fr; gap: 36px; align-items: start; }
   .photo {
-    width: 168px; height: 168px; border-radius: 12px; object-fit: cover;
+    width: 168px; height: 210px; border-radius: 12px; object-fit: cover; object-position: 50% 18%; display: block;
     border: 1px solid var(--line); background: var(--bg-raised);
   }
   h1 { font-size: 34px; line-height: 1.15; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
@@ -155,13 +155,6 @@
   a.tag:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
   .tag.award { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, transparent); }
 
-  details.review { margin-top: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-raised); }
-  details.review summary {
-    cursor: pointer; padding: 12px 18px; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; color: var(--muted);
-  }
-  details.review ul { margin: 0; padding: 0 18px 12px 38px; }
-  details.review li { font-size: 14.5px; margin: 6px 0; }
-  details.review li span { color: var(--muted); }
 
   /* lists */
   .plain { list-style: none; margin: 0; padding: 0; }
@@ -180,7 +173,7 @@
     .navlinks { gap: 12px; }
     .crumb { font-size: 13px; }
     .hero-grid { grid-template-columns: 1fr; gap: 20px; }
-    .photo { width: 120px; height: 120px; }
+    .photo { width: 136px; height: 170px; }
     h1 { font-size: 28px; }
     .pub { grid-template-columns: 1fr; gap: 8px; }
     .venue { justify-self: start; }
@@ -254,23 +247,23 @@
     <h2>news</h2>
     <div class="news" tabindex="0" aria-label="News, scrollable">
       <ul>
-        <li><time>[2026]</time><span>Paper on partition-aware unlearning in LVLMs accepted at <b>NeurIPS 2026</b> (Evaluations &amp; Datasets Track).</span></li>
-        <li><time>[2026]</time><span><b>FedQCL</b> accepted at <b>CoLLAs 2026</b> as an <b>Oral (top 8%)</b>.</span></li>
-        <li><time>[2026]</time><span><b>COLD</b> accepted at <b>TMLR</b>.</span></li>
-        <li><time>[2026]</time><span>Paper on uncertainty-aware explanations accepted at <b>ECML-PKDD 2026</b>.</span></li>
-        <li><time>[2026]</time><span>Awarded the <b>DAAD AInet Fellowship</b> (Postdoc-NeT-AI, Reliable AI cohort).</span></li>
-        <li><time>[2026]</time><span>Recognized among India's <b>Top 100 AI/ML Researchers</b> by Amazon.</span></li>
+        <li><time>[Oct 2026]</time><span>Awarded the <b>DAAD AInet Fellowship</b> (Postdoc-NeT-AI, Reliable AI cohort).</span></li>
+        <li><time>[Sep 2026]</time><span>Paper on partition-aware unlearning in LVLMs accepted at <b>NeurIPS 2026</b> (Evaluations &amp; Datasets Track).</span></li>
+        <li><time>[Sep 2026]</time><span>Recognized among India's <b>Top 100 AI/ML Researchers</b> by Amazon.</span></li>
+        <li><time>[Jun 2026]</time><span><b>FedQCL</b> accepted at <b>CoLLAs 2026</b> as an <b>Oral (top 8%)</b>.</span></li>
+        <li><time>[Jun 2026]</time><span><b>COLD</b> accepted at <b>TMLR</b>.</span></li>
         <li><time>[Jun 2026]</time><span>Selected for <b>MLSS 2026</b> at Columbia University, NYC (16.7% acceptance).</span></li>
         <li><time>[Jun 2026]</time><span>Presented at the <b>WiCV Workshop, CVPR 2026</b>, Denver.</span></li>
         <li><time>[May 2026]</time><span>Presented at the <b>IPDPS 2026 PhD Forum</b>, New Orleans.</span></li>
         <li><time>[Feb 2026]</time><span>Started a visit to <b>Wayne State University</b>, Detroit, with Dr. Prashant Khanduri.</span></li>
+        <li><time>[2026]</time><span>Paper on uncertainty-aware explanations accepted at <b>ECML-PKDD 2026</b>.</span></li>
         <li><time>[2026]</time><span>Over-the-air FL paper accepted at <b>ICASSP 2026</b>.</span></li>
         <li><time>[Dec 2025]</time><span>Poster at <b>IndoML</b> Summer School, BITS Pilani.</span></li>
         <li><time>[Sep 2025]</time><span>Attended <b>M2L</b> Summer School, Split, Croatia (full grant).</span></li>
         <li><time>[2025]</time><span>Personalized federated autoencoders accepted at <b>ICVGIP 2025</b>.</span></li>
         <li><time>[2025]</time><span>Presented <b>C-FLAG</b> at <b>AISTATS 2025</b>, Phuket.</span></li>
         <li><time>[2025]</time><span><b>Best Poster Award</b> at ICDCN 2025, IIT Hyderabad.</span></li>
-        <li><time>[2024]</time><span>Poster at the <b>WiML Workshop, NeurIPS 2024</b>, Vancouver.</span></li>
+        <li><time>[Dec 2024]</time><span>Poster at the <b>WiML Workshop, NeurIPS 2024</b>, Vancouver.</span></li>
         <li><time>[Jul 2024]</time><span>Attended <b>EEML</b> Summer School, Novi Sad, Serbia (full grant).</span></li>
       </ul>
     </div>
@@ -403,15 +396,6 @@
 
     </ul>
 
-    <details class="review">
-      <summary>Under review (4)</summary>
-      <ul>
-        <li>Unified Continual Learning and Unlearning with Adaptive Constraints <span>— <b>N. Shah</b>, P. Khanduri, N. K. R. Somireddy, B. N. Bharath, R. Prasad</span></li>
-        <li>Unified Robust and Convergent Over-The-Air Federated Learning under Channel Noise and Heterogeneity <span>— Z. Shaban, <b>N. Shah</b>, R. Prasad</span></li>
-        <li>Stochastic Gradient Drift-Plus-Penalty for Replay-based Continual Learning <span>— G. Arya, <b>N. Shah</b>, B. N. Bharath, R. Prasad</span></li>
-        <li>CERTAIN: Certification-Aware Predictive Information for Local Explanations <span>— S. Chugh, R. Prasad, <b>N. Shah</b></span></li>
-      </ul>
-    </details>
   </section>
 
   <section id="honors">
@@ -434,7 +418,7 @@
         </p>
         <h2 style="margin-top:24px">teaching</h2>
         <p class="small">
-          TA at IIIT Delhi for Distributed &amp; Federated ML, Probability &amp; Random Processes, and Convex Optimization.
+          Teaching Assistant, IIIT Delhi:<br />Distributed &amp; Federated ML (2023, 2025)<br />Probability &amp; Random Processes (2024)<br />Convex Optimization (2023)
         </p>
       </div>
     </div>
