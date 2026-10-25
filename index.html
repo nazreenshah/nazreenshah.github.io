@@ -1,211 +1,466 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nazreen Shah Ambalath</title>
+<meta name="description" content="Nazreen Shah Ambalath — Ph.D. candidate at IIIT Delhi working on federated learning, continual learning and unlearning." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b0e13;
+    --bg-raised: #11161e;
+    --line: #1e2631;
+    --grid: rgba(90, 140, 200, 0.05);
+    --text: #d7dde6;
+    --muted: #8591a3;
+    --faint: #5b6677;
+    --blue: #5aa9ff;
+    --green: #3ddc97;
+    --amber: #f0b44c;
+    --chip: #161d27;
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f8fa;
+    --bg-raised: #ffffff;
+    --line: #e1e5eb;
+    --grid: rgba(30, 80, 160, 0.05);
+    --text: #1b2230;
+    --muted: #5a6577;
+    --faint: #8a94a5;
+    --blue: #1f6fd1;
+    --green: #108a5a;
+    --amber: #a66a00;
+    --chip: #eef1f5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f7f8fa; --bg-raised: #ffffff; --line: #e1e5eb; --grid: rgba(30, 80, 160, 0.05);
+      --text: #1b2230; --muted: #5a6577; --faint: #8a94a5;
+      --blue: #1f6fd1; --green: #108a5a; --amber: #a66a00; --chip: #eef1f5;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--text);
+    font: 16px/1.65 "IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* nav */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+  .crumb { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--muted); white-space: nowrap; }
+  .crumb b { color: var(--green); font-weight: 500; }
+  .navlinks { display: flex; gap: 20px; align-items: center; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; }
+  .navlinks a { color: var(--muted); }
+  .navlinks a:hover { color: var(--text); text-decoration: none; }
+  .toggle {
+    background: none; border: 1px solid var(--line); color: var(--muted);
+    border-radius: 6px; width: 30px; height: 30px; cursor: pointer; font-size: 14px;
+  }
+  .toggle:hover { color: var(--text); }
+
+  /* hero */
+  header.hero { padding: 56px 0 40px; }
+  .hero-grid { display: grid; grid-template-columns: 168px 1fr; gap: 36px; align-items: start; }
+  .photo {
+    width: 168px; height: 168px; border-radius: 12px; object-fit: cover;
+    border: 1px solid var(--line); background: var(--bg-raised);
+  }
+  h1 { font-size: 34px; line-height: 1.15; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
+  .role { font-family: "IBM Plex Mono", monospace; font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+  .role .dot { color: var(--green); }
+  .bio p { margin: 0 0 12px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .btn {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px;
+    border: 1px solid var(--line); background: var(--bg-raised);
+    color: var(--text); padding: 6px 12px; border-radius: 6px;
+  }
+  .btn:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+  .btn.primary { border-color: var(--blue); color: var(--blue); }
+
+  /* sections */
+  section { padding: 28px 0; }
+  h2 {
+    font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 15px;
+    color: var(--muted); margin: 0 0 18px; letter-spacing: 0.02em;
+  }
+  h2::before { content: "// "; color: var(--faint); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--chip); border: 1px solid var(--line); border-radius: 999px;
+    padding: 4px 12px; font-size: 14px;
+  }
+
+  /* news */
+  .news {
+    max-height: 300px; overflow-y: auto;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--bg-raised);
+    padding: 6px 0;
+    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  }
+  .news ul { list-style: none; margin: 0; padding: 0; }
+  .news li {
+    display: grid; grid-template-columns: 92px 1fr; gap: 14px;
+    padding: 9px 18px; font-size: 15px; line-height: 1.5;
+  }
+  .news li + li { border-top: 1px dashed var(--line); }
+  .news time { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--amber); padding-top: 1px; }
+  .news-hint { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--faint); margin-top: 8px; }
+
+  /* publications */
+  .pubs { list-style: none; margin: 0; padding: 0; }
+  .pub {
+    display: grid; grid-template-columns: 104px 1fr; gap: 18px;
+    padding: 16px 0; border-top: 1px solid var(--line);
+  }
+  .pub:first-child { border-top: none; padding-top: 4px; }
+  .venue {
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 600;
+    color: var(--green); border: 1px solid color-mix(in srgb, var(--green) 40%, transparent);
+    border-radius: 5px; padding: 3px 6px; text-align: center; align-self: start; white-space: nowrap;
+  }
+  .pub-title { font-weight: 600; font-size: 16px; line-height: 1.4; color: var(--text); }
+  a.pub-title:hover { color: var(--blue); }
+  .authors { font-size: 14.5px; color: var(--muted); margin-top: 3px; }
+  .authors b { color: var(--text); font-weight: 600; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; font-size: 13.5px; }
+  .meta .full { color: var(--faint); }
+  .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    padding: 1px 7px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted);
+  }
+  a.tag:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+  .tag.award { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, transparent); }
+
+  details.review { margin-top: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-raised); }
+  details.review summary {
+    cursor: pointer; padding: 12px 18px; font-family: "IBM Plex Mono", monospace; font-size: 13.5px; color: var(--muted);
+  }
+  details.review ul { margin: 0; padding: 0 18px 12px 38px; }
+  details.review li { font-size: 14.5px; margin: 6px 0; }
+  details.review li span { color: var(--muted); }
+
+  /* lists */
+  .plain { list-style: none; margin: 0; padding: 0; }
+  .plain li { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 15px; }
+  .plain li:first-child { border-top: none; }
+  .plain .yr { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faint); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .small { font-size: 15px; color: var(--muted); margin: 0; }
+  .small b { color: var(--text); font-weight: 500; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 32px; padding: 24px 0 40px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--faint); }
+
+  @media (max-width: 720px) {
+    .navlinks a.hide-sm, .crumb .hide-sm { display: none; }
+    .navlinks { gap: 12px; }
+    .crumb { font-size: 13px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+    .photo { width: 120px; height: 120px; }
+    h1 { font-size: 28px; }
+    .pub { grid-template-columns: 1fr; gap: 8px; }
+    .venue { justify-self: start; }
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+    .news li { grid-template-columns: 1fr; gap: 2px; }
+    header.hero { padding-top: 32px; }
+  }
+</style>
 </head>
 <body>
-<div id="layout-content">
 
-<table class="imgtable"><tr><td>
-<img src="profile.jpg" alt="Nazreen Shah Ambalath" width="150px" />&nbsp;</td>
-<td align="left">
-  <h2>Nazreen Shah Ambalath (S A Nazreen)</h2>
-  <p>
-    PhD Student, ECE<br />
-    <a href="https://www.iiitd.ac.in/">IIIT Delhi</a><br />
-    <a href="https://intellicomlab.iiitd.edu.in/">Intellicom Lab</a>, RnD Block<br />
-    Email: <a href="mailto:nazreens@iiitd.ac.in">nazreens@iiitd.ac.in</a>
-  </p>
-  <p>
-    <a href="CV_New-15.pdf">[CV]</a>
-    <a href="https://scholar.google.com/citations?user=7HCUafUAAAAJ&hl=en">[Google Scholar]</a>
-    <a href="https://www.linkedin.com/in/nazreenshah1997/">[LinkedIn]</a>
-    <a href="https://github.com/nazreenshah">[GitHub]</a>
-    <a href="https://wandb.ai/nazreen">[Weights & Biases]</a>
-  </p>
-</td></tr></table>
+<nav>
+  <div class="wrap">
+    <span class="crumb">~/<b>nazreenshah</b><span class="hide-sm">.github.io</span></span>
+    <div class="navlinks">
+      <a href="#news">news</a>
+      <a href="#publications">publications</a>
+      <a href="#honors" class="hide-sm">honors</a>
+      <a href="CV_New-16.pdf">cv</a>
+      <button class="toggle" id="themeToggle" aria-label="Toggle colour theme">◐</button>
+    </div>
+  </div>
+</nav>
 
-<h2>About Me</h2>
-<p>
-I am a PhD student at IIIT Delhi (since January, 2022), advised by 
-<b><a href="https://www.iiitd.ac.in/ranjitha">Dr. Ranjitha Prasad</a></b>. 
-My research focuses on <b>Federated Learning</b>, particularly:
-</p>
-<ul>
-  <li>Personalized Federated Learning</li>
-  <li>Continual Federated Learning</li>
-  <li>Unsupervised & Decentralized Federated Learning</li>
-</ul>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <img class="photo" src="profile.jpg" alt="Nazreen Shah Ambalath" />
+    <div>
+      <h1>Nazreen Shah Ambalath</h1>
+      <div class="role"><span class="dot">●</span> Ph.D. Candidate, ECE · IIIT Delhi</div>
+      <div class="bio">
+        <p>
+          I work on theoretically grounded, communication-efficient <b>federated learning</b>:
+          personalized, continual, decentralized and over-the-air. I also study continual learning
+          and machine unlearning in large models. I am advised by
+          <a href="https://www.iiitd.ac.in/ranjitha">Dr. Ranjitha Prasad</a> at the
+          <a href="https://intellicomlab.iiitd.edu.in/">Intellicom Lab</a>, and was a Visiting Scholar at
+          <a href="https://wayne.edu/">Wayne State University</a> (Feb–Jul 2026) with
+          <a href="https://sites.google.com/view/khanduri-prashant/home">Dr. Prashant Khanduri</a>.
+        </p>
+        <p>
+          I am a Prime Minister's Fellow for Doctoral Research (SERB–FICCI) and a DAAD AInet Fellow (2026).
+          Expected graduation: January 2027.
+        </p>
+      </div>
+      <div class="links">
+        <a class="btn primary" href="CV_New-16.pdf">CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=7HCUafUAAAAJ&hl=en">Scholar</a>
+        <a class="btn" href="https://github.com/nazreenshah">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/nazreenshah1997/">LinkedIn</a>
+        <a class="btn" href="mailto:nazreens@iiitd.ac.in">nazreens@iiitd.ac.in</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-<p>
-I am a recipient of the <a href="https://www.serbficci-iirrada.in/index.html"><b>Prime Minister’s Fellowship for Doctoral Research (SERB–FICCI)</b></a>.  
-Currently, I am a <b>Visiting Scholar (February, 2026 - July, 2026) at <a href="https://wayne.edu/">Wayne State University</a>, Detroit</b>, working with 
-<b><a href="https://sites.google.com/view/khanduri-prashant/home?authuser=0">Dr. Prashant Khanduri</a></b>.
-</p>
+<main class="wrap">
 
-<p>
-Previously, I worked at ISI Kolkata (DRDO project on Hardware Trojan Detection using X-ray imaging) 
-and at IDRBT Hyderabad on reversible data hiding in images.  
-I completed my 5-year Integrated M.Tech in Computer Science from the 
-<a href="https://uohyd.ac.in/">University of Hyderabad</a>.
-</p>
+  <section id="research">
+    <h2>research_interests</h2>
+    <div class="chips">
+      <span class="chip">Federated Learning</span>
+      <span class="chip">Personalized &amp; Continual FL</span>
+      <span class="chip">Over-the-Air FL &amp; Robust Aggregation</span>
+      <span class="chip">Continual Learning Theory</span>
+      <span class="chip">Unlearning in Vision-Language Models</span>
+    </div>
+  </section>
 
-<h2>Research Interests</h2>
-<ul>
-  <li>Federated Learning & Federated Optimization</li>
-  <li>Personalization in FL</li>
-  <li>Continual Learning & Unlearning</li>
-  <li>Unsupervised Representation Learning</li>
-  <li>Over-the-Air Federated Learning</li>
-</ul>
+  <section id="news">
+    <h2>news</h2>
+    <div class="news" tabindex="0" aria-label="News, scrollable">
+      <ul>
+        <li><time>[2026]</time><span>Paper on partition-aware unlearning in LVLMs accepted at <b>NeurIPS 2026</b> (Evaluations &amp; Datasets Track).</span></li>
+        <li><time>[2026]</time><span><b>FedQCL</b> accepted at <b>CoLLAs 2026</b> as an <b>Oral (top 8%)</b>.</span></li>
+        <li><time>[2026]</time><span><b>COLD</b> accepted at <b>TMLR</b>.</span></li>
+        <li><time>[2026]</time><span>Paper on uncertainty-aware explanations accepted at <b>ECML-PKDD 2026</b>.</span></li>
+        <li><time>[2026]</time><span>Awarded the <b>DAAD AInet Fellowship</b> (Postdoc-NeT-AI, Reliable AI cohort).</span></li>
+        <li><time>[2026]</time><span>Recognized among India's <b>Top 100 AI/ML Researchers</b> by Amazon.</span></li>
+        <li><time>[Jun 2026]</time><span>Selected for <b>MLSS 2026</b> at Columbia University, NYC (16.7% acceptance).</span></li>
+        <li><time>[Jun 2026]</time><span>Presented at the <b>WiCV Workshop, CVPR 2026</b>, Denver.</span></li>
+        <li><time>[May 2026]</time><span>Presented at the <b>IPDPS 2026 PhD Forum</b>, New Orleans.</span></li>
+        <li><time>[Feb 2026]</time><span>Started a visit to <b>Wayne State University</b>, Detroit, with Dr. Prashant Khanduri.</span></li>
+        <li><time>[2026]</time><span>Over-the-air FL paper accepted at <b>ICASSP 2026</b>.</span></li>
+        <li><time>[Dec 2025]</time><span>Poster at <b>IndoML</b> Summer School, BITS Pilani.</span></li>
+        <li><time>[Sep 2025]</time><span>Attended <b>M2L</b> Summer School, Split, Croatia (full grant).</span></li>
+        <li><time>[2025]</time><span>Personalized federated autoencoders accepted at <b>ICVGIP 2025</b>.</span></li>
+        <li><time>[2025]</time><span>Presented <b>C-FLAG</b> at <b>AISTATS 2025</b>, Phuket.</span></li>
+        <li><time>[2025]</time><span><b>Best Poster Award</b> at ICDCN 2025, IIT Hyderabad.</span></li>
+        <li><time>[2024]</time><span>Poster at the <b>WiML Workshop, NeurIPS 2024</b>, Vancouver.</span></li>
+        <li><time>[Jul 2024]</time><span>Attended <b>EEML</b> Summer School, Novi Sad, Serbia (full grant).</span></li>
+      </ul>
+    </div>
+    <div class="news-hint">↓ scroll for more</div>
+  </section>
 
-<h2>Publications</h2>
-<ul>
-  <li>
-    <p>
-      <b>
-        <!-- <a href="https://ieeexplore.ieee.org/document/11017460"> -->
-          Channel-Adaptive Robust Aggregation for Over-the-Air Federated Learning in Heterogeneous Networks
-        <!-- </a> -->
-      </b><br />
-      Fathima Z., Zubair Shaban, Jamala Y., <em>Nazreen Shah</em>, Bharath B. N., Ranjitha Prasad<br />
-      IEEE ICASSP 2026
-    </p>
-  </li>
+  <section id="publications">
+    <h2>publications</h2>
+    <ul class="pubs">
 
-  <li>
-    <p>
-      <b>
-        <!-- <a href="https://arxiv.org/abs/2501.01234"> -->
-          Personalized Federated Autoencoders: Unsupervised Representation Learning at the Edge
-        <!-- </a> -->
-      </b><br />
-      <em>Nazreen Shah</em>, K. Arora, A. Sethi, Ranjitha Prasad, M. Uliyar, A. G. Krishna<br />
-      ICVGIP 2025
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">NeurIPS '26</span>
+        <div>
+          <a class="pub-title" href="https://arxiv.org/abs/2608.29996">Partition-Aware Unlearning for Removing Spurious Correlations in Large Vision-Language Models</a>
+          <div class="authors">A. Sarker, <b>N. Shah</b>, R. Sultan, R. Jang, D. Zhu, P. Khanduri</div>
+          <div class="meta"><span class="full">NeurIPS 2026, Evaluations &amp; Datasets Track</span>
+            <a class="tag" href="https://arxiv.org/abs/2608.29996">arXiv</a></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <a href="https://arxiv.org/abs/2411.07959">
-          On the Convergence of Continual Federated Learning Using Incrementally Aggregated Gradients
-        </a>
-      </b><br />
-      Satish Kumar Keshri, <em>Nazreen Shah</em>, Ranjitha Prasad<br />
-      AISTATS 2025
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">CoLLAs '26</span>
+        <div>
+          <a class="pub-title" href="https://arxiv.org/abs/2608.21539">Federated Continual Learning as a Distributed Drift-Plus-Penalty Control Problem</a>
+          <div class="authors"><b>N. Shah</b>, N. Somireddy, Z. Shaban, R. Prasad, B. N. Bharath</div>
+          <div class="meta"><span class="full">Conference on Lifelong Learning Agents 2026</span>
+            <span class="tag award">Oral · top 8%</span>
+            <a class="tag" href="https://arxiv.org/abs/2608.21539">arXiv</a></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <a href="https://ieeexplore.ieee.org/document/10890519">
-          Robust Over-The-Air Federated Learning in Heterogeneous Networks
-        </a>
-      </b><br />
-      Zubair Shaban, <em>Nazreen Shah</em>, Ranjitha Prasad<br />
-      IEEE ICASSP 2025
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">TMLR '26</span>
+        <div>
+          <a class="pub-title" href="https://openreview.net/forum?id=QhxNMdhhBy">Theoretical Foundations of Continual Learning via Drift-Plus-Penalty</a>
+          <div class="authors"><b>N. Shah</b>, G. Arya, B. N. Bharath, R. Prasad</div>
+          <div class="meta"><span class="full">Transactions on Machine Learning Research</span>
+            <a class="tag" href="https://openreview.net/forum?id=QhxNMdhhBy">OpenReview</a></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <!-- <a href="https://dl.acm.org/doi/10.1145/3702194.3702283"> -->
-          Federated Probabilistic Representation Learning using Information Geometric Approach
-        <!-- </a> -->
-      </b><br />
-      <em>Nazreen Shah</em>, Ranjitha Prasad<br />
-      CODS-COMAD 2024
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">ECML '26</span>
+        <div>
+          <a class="pub-title" href="https://arxiv.org/abs/2603.14894">Informative Perturbation Selection for Uncertainty-Aware Post-hoc Explanations</a>
+          <div class="authors">S. Chugh, R. Prasad, <b>N. Shah</b></div>
+          <div class="meta"><span class="full">ECML-PKDD 2026</span>
+            <a class="tag" href="https://arxiv.org/abs/2603.14894">arXiv</a></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <!-- <a href="https://dl.acm.org/doi/10.1145/3702194.3702290"> -->
-          Continual Federated Learning with Aggregated Gradients
-        <!-- </a> -->
-      </b><br />
-      Satish Kumar Keshri, <em>Nazreen Shah</em>, Ranjitha Prasad<br />
-      CODS-COMAD 2024
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">ICASSP '26</span>
+        <div>
+          <a class="pub-title" href="https://doi.org/10.1109/ICASSP55912.2026.11464541">Channel-Adaptive Robust Aggregation for Over-the-Air Federated Learning in Heterogeneous Networks</a>
+          <div class="authors">Z. Fatima, Z. Shaban, Y. Jamal, <b>N. Shah</b>, B. N. Bharath, R. Prasad</div>
+          <div class="meta"><span class="full">IEEE ICASSP 2026</span>
+            <a class="tag" href="https://doi.org/10.1109/ICASSP55912.2026.11464541">IEEE</a>
+            <a class="tag" href="https://arxiv.org/abs/2607.04218">arXiv</a></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <a href="https://ieeexplore.ieee.org/document/10447119">
-          Importance Sampling Based Federated Unsupervised Representation Learning
-        </a>
-      </b><br />
-      <em>Nazreen Shah</em>, Prachi Goyal, Ranjitha Prasad<br />
-      IEEE ICASSP 2024
-    </p>
-  </li>
+      <li class="pub">
+        <span class="venue">ICVGIP '25</span>
+        <div>
+          <span class="pub-title">Personalized Federated Autoencoders: Unsupervised Representation Learning at the Edge</span>
+          <div class="authors">K. Arora*, <b>N. Shah*</b>, A. Sethi, R. Prasad, M. Uliyar, A. G. Krishna</div>
+          <div class="meta"><span class="full">ICVGIP 2025 · *equal contribution</span></div>
+        </div>
+      </li>
 
-  <li>
-    <p>
-      <b>
-        <a href="https://ieeexplore.ieee.org/document/10464705">
-          Over-the-Air Clustered Wireless Federated Learning
-        </a>
-      </b><br />
-      Ayush Madhan-Sohini, Divin Dominic, <em>Nazreen Shah</em>, Ranjitha Prasad<br />
-      IEEE Globecom Workshops 2023
-    </p>
-  </li>
-</ul>
+      <li class="pub">
+        <span class="venue">AISTATS '25</span>
+        <div>
+          <a class="pub-title" href="https://arxiv.org/abs/2411.07959">On the Convergence of Continual Federated Learning Using Incrementally Aggregated Gradients</a>
+          <div class="authors">S. K. Keshri, <b>N. Shah</b>, R. Prasad</div>
+          <div class="meta"><span class="full">AISTATS 2025</span>
+            <a class="tag" href="https://arxiv.org/abs/2411.07959">arXiv</a></div>
+        </div>
+      </li>
 
-<h2>Preprints</h2>
-<ul>
-  <li>
-    <p>
-      <b>
-        <a href="https://arxiv.org/abs/2211.03363">
-          Over-The-Air Clustered Wireless Federated Learning
-        </a>
-      </b><br />
-      Ayush Madhan-Sohini, Divin Dominic, <em>Nazreen Shah</em>, Ranjitha Prasad
-    </p>
-  </li>
-</ul>
+      <li class="pub">
+        <span class="venue">ICASSP '25</span>
+        <div>
+          <a class="pub-title" href="https://ieeexplore.ieee.org/document/10890519">Robust Over-The-Air Federated Learning in Heterogeneous Networks</a>
+          <div class="authors">Z. Shaban, <b>N. Shah</b>, R. Prasad</div>
+          <div class="meta"><span class="full">IEEE ICASSP 2025</span>
+            <a class="tag" href="https://ieeexplore.ieee.org/document/10890519">IEEE</a></div>
+        </div>
+      </li>
 
+      <li class="pub">
+        <span class="venue">ICASSP '24</span>
+        <div>
+          <a class="pub-title" href="https://ieeexplore.ieee.org/document/10447119">Importance Sampling Based Federated Unsupervised Representation Learning</a>
+          <div class="authors"><b>N. Shah*</b>, P. Goyal*, R. Prasad</div>
+          <div class="meta"><span class="full">IEEE ICASSP 2024 · *equal contribution</span>
+            <a class="tag" href="https://ieeexplore.ieee.org/document/10447119">IEEE</a></div>
+        </div>
+      </li>
 
-<h2>Academic Service</h2>
-<ul>
-  <li>Reviewer: ICASSP, ICC, WiML-NeurIPS, AAAI-FLCA Workshop</li>
-  <li>Volunteer: NCC 2025 (IIT Delhi)</li>
-  <li>IEEE SPS & IEEE WIE Member</li>
-</ul>
+      <li class="pub">
+        <span class="venue">CODS '24</span>
+        <div>
+          <span class="pub-title">Federated Probabilistic Representation Learning using Information Geometric Approach</span>
+          <div class="authors"><b>N. Shah</b>, R. Prasad</div>
+          <div class="meta"><span class="full">ACM CODS-COMAD 2024</span></div>
+        </div>
+      </li>
 
-<h2>Awards & Fellowships</h2>
-<ul>
-  <li>Prime Minister’s Fellowship for Doctoral Research (SERB–FICCI)</li>
-  <li>Best Poster Award – ICDCN 2025</li>
-  <li>Multiple travel grants (ICASSP, NeurIPS WiML, EEML, CODS-COMAD)</li>
-  <li>Dean’s List – Best Teaching Assistant, IIIT Delhi</li>
-</ul>
+      <li class="pub">
+        <span class="venue">CODS '24</span>
+        <div>
+          <span class="pub-title">Continual Federated Learning with Aggregated Gradients</span>
+          <div class="authors">S. K. Keshri, <b>N. Shah</b>, R. Prasad</div>
+          <div class="meta"><span class="full">ACM CODS-COMAD 2024</span></div>
+        </div>
+      </li>
 
-<h2>Teaching</h2>
-<ul>
-  <li>Teaching Assistant – Convex Optimization (IIIT Delhi)</li>
-  <li>Teaching Assistant – Distributed & Federated ML (IIIT Delhi)</li>
-  <li>Teaching Assistant – Probability & Random Processes (IIIT Delhi)</li>
-</ul>
+      <li class="pub">
+        <span class="venue">GC Wkshps '23</span>
+        <div>
+          <a class="pub-title" href="https://ieeexplore.ieee.org/document/10464705">Over-the-Air Clustered Wireless Federated Learning</a>
+          <div class="authors">A. Madhan-Sohini, D. Dominic, <b>N. Shah</b>, R. Prasad</div>
+          <div class="meta"><span class="full">IEEE Globecom Workshops 2023</span>
+            <a class="tag" href="https://ieeexplore.ieee.org/document/10464705">IEEE</a>
+            <a class="tag" href="https://arxiv.org/abs/2211.03363">arXiv</a></div>
+        </div>
+      </li>
 
-<h2>Contact</h2>
-<p>
-Email: <a href="mailto:nazreens@iiitd.ac.in">nazreens@iiitd.ac.in</a><br />
-GitHub: <a href="https://github.com/nazreenshah">github.com/nazreenshah</a><br />
-Website: <a href="http://nazreenshah.github.io">nazreenshah.github.io</a>
-</p>
+    </ul>
 
-</div>
+    <details class="review">
+      <summary>Under review (4)</summary>
+      <ul>
+        <li>Unified Continual Learning and Unlearning with Adaptive Constraints <span>— <b>N. Shah</b>, P. Khanduri, N. K. R. Somireddy, B. N. Bharath, R. Prasad</span></li>
+        <li>Unified Robust and Convergent Over-The-Air Federated Learning under Channel Noise and Heterogeneity <span>— Z. Shaban, <b>N. Shah</b>, R. Prasad</span></li>
+        <li>Stochastic Gradient Drift-Plus-Penalty for Replay-based Continual Learning <span>— G. Arya, <b>N. Shah</b>, B. N. Bharath, R. Prasad</span></li>
+        <li>CERTAIN: Certification-Aware Predictive Information for Local Explanations <span>— S. Chugh, R. Prasad, <b>N. Shah</b></span></li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="honors">
+    <div class="two-col">
+      <div>
+        <h2>honors</h2>
+        <ul class="plain">
+          <li><span>DAAD AInet Fellowship</span><span class="yr">2026</span></li>
+          <li><span>India's Top 100 AI/ML Researchers, Amazon</span><span class="yr">2026</span></li>
+          <li><span>Prime Minister's Fellowship (SERB–FICCI)</span><span class="yr">2023</span></li>
+          <li><span>Best Poster Award, ICDCN</span><span class="yr">2025</span></li>
+          <li><span>Dean's List, Best TA, IIIT Delhi</span><span class="yr">2025, 26</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>service</h2>
+        <p class="small">
+          <b>Reviewer:</b> AISTATS 2027, IEEE TMC, IEEE SPL, ICASSP, ICC, WiML-NeurIPS<br />
+          <b>Program committee:</b> MLSys Artifact Evaluation 2026, AAAI FLCA Workshop 2025
+        </p>
+        <h2 style="margin-top:24px">teaching</h2>
+        <p class="small">
+          TA at IIIT Delhi for Distributed &amp; Federated ML, Probability &amp; Random Processes, and Convex Optimization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>nazreens@iiitd.ac.in · R&amp;D Block, IIIT Delhi</span>
+    <span>last updated Oct 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, key = "theme";
+    try { var saved = localStorage.getItem(key); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+    document.getElementById("themeToggle").addEventListener("click", function () {
+      var current = root.getAttribute("data-theme") ||
+        (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      var next = current === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem(key, next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
